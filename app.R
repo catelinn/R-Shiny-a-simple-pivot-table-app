@@ -17,6 +17,7 @@
 # runGist("edaa916edf572b3a9db331ab6ac7ce74")  
 #############################################################################################################################
 
+# PENDING - priority: data frame over 15 columns can take up too much memory, need to warn user when maximum columns over! 
 # PENDING - validate input$daterange(i) - no dates can be selected outside of the range 
 # PENDING - checkbox to choose show date columns data as date, month or year 
 # PENDING - retest rvest() for rpivotTable data on Shiny.io when solution is found! (convert html table to data frame)

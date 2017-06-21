@@ -6,10 +6,11 @@
 # 
 # ----- sharing the app -----
 # Github repo: 
-#
+# How to setup: https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+# https://github.com/catelinn/a-simple-pivot-data-app
 #
 # for web user to download and test the app in their computer (requirements: R/RStudio IDE, shiny package)
-# the file is saved on https://gist.github.com 
+# the file is saved on https://gist.github.com (my Github account)
 # runGist("edaa916edf572b3a9db331ab6ac7ce74")  
 #############################################################################################################################
 

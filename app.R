@@ -7,6 +7,7 @@
 # ----- sharing the app -----
 # Github repo: 
 # How to setup: https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+# Quick Reference: https://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1/
 # https://github.com/catelinn/a-simple-pivot-data-app
 #
 # for web user to download and test the app in their computer (requirements: R/RStudio IDE, shiny package)

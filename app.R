@@ -3,6 +3,8 @@
 # 1. uses rpivotTable package to do generate pivot table, slice data in the table and generate charts for the table
 # 2. download summary data to csv file ( this NOT working on shiny.io error:cannot find x-path element!)
 # 3. filter data by date columns
+# 4. copyright footer in ui page
+# 5. add css style for datecontrol ui row
 # 
 # ----- sharing the app -----
 # Github repo: 
@@ -93,6 +95,10 @@ ui = fluidPage(
   
   theme = shinytheme("cerulean"),
   
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
+  ),
+  
   navbarPage("myApp",
              
              tabPanel("Data", 
@@ -122,22 +128,32 @@ ui = fluidPage(
                           
                         ),
                         
-                        hr(),
                         
                         fluidRow(
-                          column(4,
-                                 uiOutput("datecolscontrol")),
-                          
-                          column(6,
-                                 uiOutput("daterangescontrol"))
+                          div( class = "daterow",
+                               column(4,
+                                      uiOutput("datecolscontrol")),
+                               
+                               column(6,
+                                      uiOutput("daterangescontrol"))
+                          )
                         ),
                         
-                        hr(),
-                        
-                        dataTableOutput("datatbl")
+                
+                        dataTableOutput("datatbl"),
                         
                         # print console for debugging (delete after completion)
                         #verbatimTextOutput("print_con")
+                        
+                        br(),
+                        br(),
+                        br(),
+                        
+                        # add footer div to bottom
+                        withTags({
+                          div(class = "footer", 
+                              HTML("<p>&copy; 2017 Catelinn Xiao</p>"))
+                        })
                         
                       )),
              
@@ -346,7 +362,7 @@ server = function(input, output, session) {
       # render column group checkbox ui after loading the data
       # tags#div has the advantage that you can give it an id to make it easier to reference or remove it later on
       tags$div(id = "columns_div", 
-               checkboxGroupInput("columns", "", choices = NULL, selected = NULL))
+               checkboxGroupInput("columns", "", choices = dt$colchoices, selected = dt$colchoices))
     })
     
     # render datecolscontrol with empty data
@@ -365,12 +381,6 @@ server = function(input, output, session) {
     req(dt$datecolchoices)
     req(dt$date_ok)
     dt$data[dt$date_ok] = lapply(dt$data[dt$date_ok], function(x) as.Date(as.character(x)))
-  })
-  
-  
-  # update columns choices when dt$choices is ready (so that it's automatically updated, not depending on input$readF)
-  observeEvent(dt$colchoices, {
-    updateCheckboxGroupInput(session, "columns", "Select Columns:", choices = dt$colchoices, selected = dt$colchoices)
   })
   
   

@@ -3,7 +3,7 @@ This is a shiny web app that allows user to upload csv or excel file for pivot t
 
 To download a copy of this app and run locally, please `runGist("edaa916edf572b3a9db331ab6ac7ce74")`. Make sure you have R / RStudio IDE on your computer with `shiny` package loaded.
 
-When the app run locally, you can do the following:
+When the app runs locally, you can do the following:
 - upload any file in csv or excel format (the app will take first row of data in csv file as header, otherwise, you need to add "header = FALSE" in argument text field)
 - choose columns to display
 - filter data by date columns if any
